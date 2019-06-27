@@ -1,14 +1,14 @@
 <%= render  partial: "errorlog" %>
 <%= form_for(@ad ,url: ad_path(@ad),html: {method: "patch",class: "form-group"}) do |f| %> <%#＃入稿フォーム %>
-  <div class="form-group">
-    <p>text</p>
+  <div class="form-group h3">
+    <p>テキスト</p>
     <%= f.text_area :text,value: @ad.text,class: "form-control" %>
-    <p>price</p>
+    <p>単価</p>
     <%= f.number_field :price,value: @ad.price %>
-    <p>advertiser_id</p>
+    <p>広告主ID</p>
     <%= f.number_field :advertiser_id,value: @ad.advertiser_id %>
-    <p>image</p>
+    <p>イメージ</p>
     <%= f.file_field :image,value: @ad.image,class: "form-control-file" %>
-    <%= f.submit class: "btn btn-primary",value: "更新" %>
+    <%= f.submit class: "btn btn-primary h2",value: "更新" %>
   </div>
 <% end %>

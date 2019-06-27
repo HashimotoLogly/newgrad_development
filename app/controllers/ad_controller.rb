@@ -15,26 +15,26 @@ class AdController < ApplicationController
   def create
     @ad = Ad.new(ad_params)
     if @ad.save # 広告登録成功時
-      flash[:notice] = 'Ad registered!'
+      flash[:notice] = '広告を登録しました！'
       redirect_to(ad_index_path)
     else
-      render('ad/new')
+      render('new')
     end
   end
 
   def update
     @ad = Ad.find(params[:id])
     if @ad.update_attributes(ad_params)
-      flash[:notice] = 'Ad updated!'
+      flash[:notice] = '広告を更新しました！'
       redirect_to(ad_index_path)
     else
-      render('ad/edit')
+      render('edit')
     end
   end
 
   def destroy
     Ad.find(params[:id]).destroy
-    flash[:notice] = 'Ad deleted!'
+    flash[:notice] = '広告を削除しました！'
     redirect_to(ad_index_path)
   end
 

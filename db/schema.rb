@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_073026) do
+ActiveRecord::Schema.define(version: 2019_05_28_085221) do
   create_table 'ads', force: :cascade do |t|
     t.integer 'advertiser_id', default: 0, null: false
     t.string 'image', default: '', null: false
@@ -19,8 +19,5 @@ ActiveRecord::Schema.define(version: 2019_06_04_073026) do
     t.string 'text', default: '', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.integer 'click'
-    t.integer 'imp'
-    t.integer 'cv'
   end
 end

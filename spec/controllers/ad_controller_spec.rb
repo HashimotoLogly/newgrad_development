@@ -58,8 +58,7 @@ RSpec.describe AdController, type: :controller do
           'price' => nil,
           'advertiser_id' => nil,
           'image' => nil
-        },
-                                 id: @ad.id }
+        }, id: @ad.id }
         expect(response).to render_template :edit
       end
 
@@ -89,15 +88,14 @@ RSpec.describe AdController, type: :controller do
           'price' => 1010101,
           'advertiser_id' => 1010101,
           'image' => Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixture/image.jpg'))
-        },
-                                 id: @ad.id }
+        }, id: @ad.id }
         expect(response).to redirect_to(ad_index_path)
       end
     end
 
     context 'when something empty' do
       it 'without text should be rendered' do
-        patch :update, params: { ad: { 'text' =>nil }, id: @ad.id }
+        patch :update, params: { ad: { 'text' => nil }, id: @ad.id }
         expect(response).to render_template :edit
       end
 
@@ -122,8 +120,7 @@ RSpec.describe AdController, type: :controller do
           'price' => nil,
           'advertiser_id' => nil,
           'image' => nil
-        },
-                                 id: @ad.id }
+        }, id: @ad.id }
         expect(response).to render_template :edit
       end
     end

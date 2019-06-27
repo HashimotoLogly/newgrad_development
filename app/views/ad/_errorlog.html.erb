@@ -1,5 +1,5 @@
 <% if @ad.errors.any? %>
   <% @ad.errors.full_messages.each do |error| %> <%# formが空白だった場合にエラーを表示　%>
-    <li><%= error %></li>
+    <li class="h2"><%= error %></li>
   <% end %>
 <% end %>

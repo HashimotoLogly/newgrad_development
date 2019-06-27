@@ -42,7 +42,7 @@ describe 'Index Links' do
   end
 
   it 'new valid?' do
-    click_link('New')
+    click_link('新規作成')
     expect(current_path).to eq new_ad_path
   end
 end
@@ -50,7 +50,7 @@ end
 describe 'Buttons' do
   context 'after new ad created' do
     before do
-      visit 'ad/new'
+      visit new_ad_path
       fill_in 'ad_text', with: 'TextForm'
       fill_in 'ad_price', with: '1000'
       fill_in 'ad_advertiser_id', with: '1'
@@ -64,11 +64,11 @@ describe 'Buttons' do
 
     context 'on Index Page' do
       it 'edit clickable' do
-        click_link('Edit')
+        click_link('変更')
       end
 
       it 'Delete clickable and its action workable' do
-        expect { click_link 'Delete' }.to change { Ad.count }.by(-1)
+        expect { click_link '削除' }.to change { Ad.count }.by(-1)
       end
     end
   end
