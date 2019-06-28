@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>媒体TEST</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <style>
+            .display {}
+            .display_img { width: 80px; height: 80px; }
+            .display_link { color: #000000; }
+        </style>
+    </head>
+    <body>
+        <div id="display">
+
+        </div>
+        <script>
+            // ここで自分の自分のテストパラメーターを入れてください。
+            site_prefix = "http://localhost:3000/";
+            adspot_id = 102;
+            count = 2;
+            window.onload = function(){
+                call_api()
+            }
+            function call_api(){
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", site_prefix + "view?adspot_id=" + adspot_id + "&count=" + count, true);
+                xhr.onload = function(){
+                    displayAd = function(ad){
+                        t = document.getElementById("display");
+                        ad_node = document.createElement("DIV");
+                        link_node = document.createElement("A");
+                        href_attr = document.createAttribute("HREF");
+                        href_attr.value = site_prefix + "click?adspot_id=" + adspot_id + "&ad_id=" + ad.ad_id;
+                        class_attr = document.createAttribute("CLASS");
+                        class_attr.value = "display_link";
+                        link_node.setAttributeNode(href_attr);
+                        link_node.setAttributeNode(class_attr);
+                        image_node = document.createElement("IMG");
+                        src_attr = document.createAttribute("SRC");
+                        src_attr.value = ad.img_url;
+                        class_attr = document.createAttribute("CLASS");
+                        class_attr.value = "display_img"
+                        image_node.setAttributeNode(src_attr);
+                        image_node.setAttributeNode(class_attr);
+                        link_node.appendChild(image_node);
+                        link_node.appendChild(document.createTextNode(ad.body));
+                        ad_node.appendChild(link_node);
+                        t.appendChild(ad_node)
+                        console.log(ad);
+                    }
+                    ads = JSON.parse(xhr.responseText);
+                    ads.forEach(ad => displayAd(ad));
+                }
+                xhr.send();
+            }
+        </script>
+    </body>
+</html>

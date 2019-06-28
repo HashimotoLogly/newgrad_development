@@ -14,14 +14,14 @@
         <%= image_tag ad.image.to_s %>
       </li>
       <div class="edit_button">
-        <%= link_to("Edit", edit_ad_path(ad)) %>
+        <%= link_to("変更", edit_ad_path(ad)) %>
       </div>
       <div class="delete_button">
-        <%= link_to("Delete", ad_path(ad) ,method: :delete) %>
+        <%= link_to("削除", ad_path(ad) ,method: :delete) %>
       </div>
     <% end %>
     <div>
-      <%= link_to("New", new_ad_path) %>
+      <%= link_to("新規作成", new_ad_path) %>
     </div>
   </div>
 </div>

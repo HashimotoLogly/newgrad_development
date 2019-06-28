@@ -97,7 +97,7 @@ RSpec.describe AdController, type: :controller do
 
     context 'when something empty' do
       it 'without text should be rendered' do
-        patch :update, params: { ad: { 'text' =>nil }, id: @ad.id }
+        patch :update, params: { ad: { 'text' => nil }, id: @ad.id }
         expect(response).to render_template :edit
       end
 
